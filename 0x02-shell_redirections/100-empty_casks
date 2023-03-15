@@ -1,2 +1,2 @@
 #!/bin/bash
-find "$(pwd)" -depth -empty | sed 's|.*/||' | tr '\n' '\0' | xargs -0 -I {} basename "{}"
+find "$(pwd)" -depth -empty -exec sh -c 'printf "%s\n" "${0##*/}"' {} \;
