@@ -1,2 +1,3 @@
 #!/bin/bash
-find . -empty -printf "%P\n"
+find "$(pwd)" -depth -empty | sed 's|.*/||' | tr '\n' '\0' | xargs -0 -I {} basename "{}"
+
